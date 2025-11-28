@@ -1,0 +1,403 @@
+@font-face {
+    font-family: "Ping";
+    src: url("./PingAmL-Regular.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+
+    ::selection {
+        background: rgb(0, 0, 0);
+        color: white;
+    }
+
+    body.dark *::selection {
+        background: #ffffff;
+        color: black;
+    }
+
+
+    font-family: "Ping";
+}
+
+
+
+body {
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    transition: .4s;
+}
+
+/* ::-webkit-scrollbar{
+    display: none;
+} */
+
+body.light {
+    background-color: white;
+    color: black;
+}
+
+body.dark {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+header,
+footer {
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    transition: .4s;
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+    bottom: 15px;
+}
+
+#startText {
+    font-size: 7vw;
+    margin-top: 10px;
+    position: absolute;
+    transform: translateY(200px);
+    opacity: 1;
+
+
+    @media (min-width: 768px) {
+        font-size: 3vw;
+    }
+}
+
+footer {
+    position: absolute;
+
+}
+
+body.dark header,
+body.dark footer {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+body.dark .logo {
+    filter: invert(1);
+}
+
+header>h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 25px;
+}
+
+header .logo {
+    width: 40px;
+    height: 30px;
+    object-fit: contain;
+    font-size: 30px;
+    transition: .4s;
+    /* background-color: wheat; */
+}
+
+
+
+#errorText {
+    color: rgb(235, 0, 0);
+    position: absolute;
+    bottom: 23%;
+}
+
+body.dark #errorText {
+    filter: invert(1);
+}
+
+header>a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+    gap: 5px;
+    transition: .4s;
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+body.dark header>a {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgba(255, 255, 255, 0);
+}
+
+body.dark header>a:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+}
+
+header>a:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 2px solid black;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    transition: .4s;
+    background-color: white;
+}
+
+body.dark main {
+    background-color: #121212;
+    color: #f1f1f1;
+
+}
+
+#chat-box {
+    width: 100%;
+    max-width: 700px;
+    background: rgb(255, 255, 255);
+    /* margin-bottom: 1rem; */
+    height: 620px;
+    color: rgb(0, 0, 0);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    transition: .4s;
+    border-radius: 10px;
+    gap: 10px;
+
+    @media (max-width: 552px) {
+        width: 99%;
+    }
+}
+
+
+body.dark #chat-box {
+    background: #121212;
+    color: #f1f1f1;
+}
+
+#chat-box::-webkit-scrollbar {
+    width: 5px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: #dfdfdf95;
+    border-radius: 10px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.usertext {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    align-self: flex-end;
+    max-width: 80%;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+body.dark .usertext {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+
+
+
+#respons {
+    color: black;
+    line-height: 1.5;
+}
+
+.respons {
+    color: black;
+    line-height: 1.5;
+}
+
+
+body.dark #respons {
+    color: #f1f1f1;
+}
+
+body.dark .respons {
+    color: #f1f1f1;
+}
+
+#user-input {
+    display: flex;
+    max-width: 600px;
+    width: 98%;
+    border: 1px solid #0d0d0d13;
+    padding: 15px 20px;
+    border-radius: 30px;
+    bottom: 20px;
+    transition: .4s;
+    flex-wrap: wrap;
+    position: absolute;
+    background-color: white;
+}
+
+body.dark #user-input {
+    background-color: #1e1e1e;
+    border: 1px solid #ffffff13;
+}
+
+#user-input input {
+    flex: 1;
+    border: none;
+    transition: .4s;
+    font-size: 1.1rem;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+body.dark #user-input input {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+
+#user-input input:focus {
+    border: none;
+    outline: none;
+}
+
+#user-input .inputSend button {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .4s;
+}
+
+body.dark #user-input .inputSend button {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#user-input .inputSend button:hover {
+    background-color: #000000;
+    font-size: 20px;
+}
+
+.inputSend {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    transition: .4s;
+    background-color: white;
+}
+
+body.dark .inputSend {
+    background-color: #1e1e1e;
+}
+
+.inputButton {
+    width: 70px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    color: #0d0d0d98;
+    border: 1px solid #0d0d0d13;
+    border-radius: 50px;
+    font-size: 20px;
+    margin-top: 5px;
+    transition: .4s;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: .4s;
+}
+
+body.dark .inputButton {
+    background-color: #1e1e1e;
+    color: #ffffff61;
+    border: 1px solid #ffffff13;
+}
+
+body.dark .inputButton:hover {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.inputButton:hover {
+    border: 1px solid black;
+    color: black;
+}
+
+#themeToggle {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+}
+
+
+body.dark #themeToggle {
+    background-color: #ffffff;
+    color: #000000;
+
+}
+
+@keyframes textFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes textFadeOut {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
