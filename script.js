@@ -54,22 +54,30 @@ async function getAIResponse(message) {
     role: "user",
     content: message
   });
+
+  // ✅ Սահմանում ենք messages փոփոխականը
+  const messages = [
+    {
+      role: "system",
+      content: aiSettings
+    },
+    ...conversationHistory
+  ];
  
   try {
-const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model: "openai/gpt-4.1",
-      messages: messages,
-      temperature: 0.7,
-      max_tokens: 1000
-    })
-  });
-
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-4.1",
+        messages: messages, // ✅ Հիմա կաշխատի
+        temperature: 0.7,
+        max_tokens: 1000
+      })
+    });
 
     if (!response.ok) {
       throw new Error(`API Error: ${response.status}`);
