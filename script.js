@@ -41,21 +41,20 @@ inputField.addEventListener('keydown', function (event) {
 /////////////////////////////////////////////////////////////////
 
 async function getAIResponse(message) {
-  const apiKey = '';
+  const apiKey = CONFIG.OPENROUTER_API_KEY;
+  
+  // Ստուգում ենք՝ արդյոք key-ը գոյություն ունի
+  if (!apiKey || apiKey === 'your_api_key_here') {
+    console.error('API Key not configured!');
+    chatBox.innerHTML += "<p class='respons' style='color: red;'>API Key-ը կարգավորված չէ։ Ստեղծեք config.js ֆայլը</p>";
+    return null;
+  }
 
   conversationHistory.push({
     role: "user",
     content: message
   });
-
-  const messages = [
-    {
-      role: "system",
-      content: aiSettings
-    },
-    ...conversationHistory
-  ];
-
+ 
   try {
 const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
